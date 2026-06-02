@@ -1,9 +1,16 @@
 const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT = __dirname;
+
+const SANITY = {
+  projectId: "abnka2pd",
+  dataset: "production",
+  apiVersion: "2024-06-01",
+};
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -20,7 +27,38 @@ const MIME = {
   ".wav": "audio/wav",
 };
 
-const server = http.createServer((req, res) => {
+function proxySanity(req, res) {
+  const url = new URL(req.url, `http://localhost:${PORT}`);
+  const query = url.searchParams.get("query");
+  if (!query) {
+    res.writeHead(400, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ error: "Missing query parameter" }));
+    return;
+  }
+
+  const sanityUrl = `https://${SANITY.projectId}.apicdn.sanity.io/v${SANITY.apiVersion}/data/query/${SANITY.dataset}?${url.searchParams}`;
+
+  https
+    .get(sanityUrl, (sanityRes) => {
+      let body = "";
+      sanityRes.on("data", (chunk) => {
+        body += chunk;
+      });
+      sanityRes.on("end", () => {
+        res.writeHead(sanityRes.statusCode, {
+          "Content-Type": "application/json; charset=utf-8",
+          "Cache-Control": "no-cache",
+        });
+        res.end(body);
+      });
+    })
+    .on("error", (err) => {
+      res.writeHead(502, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: err.message }));
+    });
+}
+
+function serveStatic(req, res) {
   let urlPath = decodeURIComponent(req.url.split("?")[0]);
   if (urlPath === "/") urlPath = "/index.html";
 
@@ -41,6 +79,14 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
     res.end(data);
   });
+}
+
+const server = http.createServer((req, res) => {
+  if (req.url.startsWith("/api/sanity")) {
+    proxySanity(req, res);
+    return;
+  }
+  serveStatic(req, res);
 });
 
 server.listen(PORT, () => {

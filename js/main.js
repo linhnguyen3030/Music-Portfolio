@@ -29,20 +29,20 @@
     document.querySelectorAll('.band-page').forEach(p => p.classList.remove('active'));
   }
 
-  // Media registry — [video1, video2, video3, photo] per band
-  const mediaRegistry = {
-    'tigers-eye':      [null, null, null, null],
-    'whisk':           [null, null, null, null],
-    'cloud-companion': [null, null, null, null],
-    'soul-sipper':     [null, null, null, null],
-    'savoy-big-band':  [null, null, null, null],
-    'souveniir':       [null, null, null, null],
+  // Populated from Sanity (js/sanity.js) or static fallback below
+  window.mediaRegistry = window.mediaRegistry || {
+    "tigers-eye": [null, null, null],
+    whisk: [null, null, null],
+    "cloud-companion": [null, null, null],
+    "soul-sipper": [null, null, null],
+    "savoy-big-band": [null, null, null],
+    souveniir: [null, null, null],
   };
 
   function openLightbox(band, index) {
     const lb = document.getElementById('lightbox');
     const content = document.getElementById('lightbox-content');
-    const src = mediaRegistry[band] && mediaRegistry[band][index];
+    const src = window.mediaRegistry[band] && window.mediaRegistry[band][index];
     const isVideo = index < 3;
 
     if (src) {
@@ -75,7 +75,8 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+  window.__fadeObserver = observer;
 
   // Stagger children of fade-in parents
   document.querySelectorAll('.playing-grid, .session-cols, .gear-inner, .about-inner, .contact-inner').forEach(parent => {

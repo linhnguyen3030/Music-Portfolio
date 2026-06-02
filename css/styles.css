@@ -679,6 +679,7 @@
     line-height: 1.6;
   }
   .band-desc::placeholder { color: var(--olive-dim); opacity: 0.7; }
+  p.band-desc { white-space: pre-wrap; }
   .collage-wrap {
     flex: 1;
     overflow: hidden;
