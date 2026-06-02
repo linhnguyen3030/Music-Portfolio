@@ -1,117 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven Garza — Live + Studio Drummer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 
-    <header class="site-header">
-      <a class="logo" href="#">Your Name</a>
-      <nav aria-label="Primary">
-        <a href="#music">Music</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo"></a>
+</nav>
 
-    <main id="main">
-      <section class="hero">
-        <p class="eyebrow">Composer · Producer · Performer</p>
-        <h1>Stories told through <em>sound</em></h1>
-        <p class="lead">
-          A home for original work, live recordings, and collaborations. Replace
-          this copy with your own voice.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#music">Listen now</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-pulse">
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+  </div>
+
+  <h1 class="hero-name">Steven<br>Garza</h1>
+  <p class="hero-sub">Live + Studio Drummer · Austin, Texas</p>
+
+  <div class="hero-buttons">
+    <a href="#playing" class="btn btn-primary">Current Projects</a>
+    <a href="#contact" class="btn btn-primary">Contact</a>
+  </div>
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="fade-in">
+      <h2 class="section-title"><em>About</em></h2>
+    </div>
+    <div class="about-text fade-in">
+      <p>Austin-based drummer focused on emotional, dynamic playing for live performance and studio sessions.</p>
+      <p>Influenced by indie, ambient, and alternative music with experience supporting artists across the Austin scene.</p>
+    </div>
+    <div class="fade-in" style="margin-top:2rem;">
+      <button class="about-expand-btn" onclick="showAboutPage()">
+        Read More &nbsp;→
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT FULL PAGE -->
+<div class="band-page" id="page-about">
+  <div class="band-page-header">
+    <button class="back-btn" onclick="hideAboutPage()">← Back</button>
+    <h2 class="band-page-title">About</h2>
+  </div>
+  <div class="about-full-inner">
+    <!-- Photo placeholder -->
+    <div class="about-photo-placeholder" onclick="document.getElementById('about-photo-upload').click()">
+      <div class="collage-icon">◻</div>
+      <span class="collage-label">Add Photo</span>
+      <input type="file" id="about-photo-upload" accept="image/*" style="display:none" onchange="loadAboutPhoto(event)">
+    </div>
+    <!-- Bio body -->
+    <textarea class="about-bio-text" placeholder="Write about yourself — your background, influences, experience, what drives you as a musician..."></textarea>
+  </div>
+</div>
+
+<!-- CURRENT PROJECTS -->
+<section class="currently-playing" id="playing">
+  <div class="section-inner">
+    <div class="fade-in">
+      <h2 class="section-title">Current<br><em>Projects</em></h2>
+    </div>
+    <div class="fade-in">
+      <ul class="playing-list">
+
+        <li class="band-row" onclick="showPage('tigers-eye')">
+          <div class="band-thumb"></div>
+          <span>TIGERS EYE</span>
+        </li>
+
+        <li class="band-row" onclick="showPage('whisk')">
+          <div class="band-thumb"></div>
+          <span>whisk</span>
+        </li>
+
+        <li class="band-row" onclick="showPage('cloud-companion')">
+          <div class="band-thumb"></div>
+          <span>Cloud Companion</span>
+        </li>
+
+        <li class="band-row" onclick="showPage('soul-sipper')">
+          <div class="band-thumb" style="background-image:url('soul-sipper.jpeg');background-size:cover;background-position:center;"></div>
+          <span>Soul Sipper</span>
+        </li>
+
+        <li class="band-row" onclick="showPage('savoy-big-band')">
+          <div class="band-thumb"></div>
+          <span>Savoy Big Band</span>
+        </li>
+
+        <li class="band-row" onclick="showPage('souveniir')">
+          <div class="band-thumb"></div>
+          <span>Souveniir</span>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BAND PAGES (hidden by default) -->
+<div id="band-pages">
+
+  <!-- TIGERS EYE -->
+  <div class="band-page" id="page-tigers-eye">
+    <div class="band-page-header">
+      <button class="back-btn" onclick="hidePage()">← Back</button>
+      <h2 class="band-page-title">TIGERS EYE</h2>
+    </div>
+    <div style="padding: 0.5rem 1.5rem 0;">
+      <textarea class="band-desc" rows="2" placeholder="Add a short description — genre, vibe, what you do with this band..."></textarea>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage">
+        <div class="collage-item" onclick="openLightbox('tigers-eye',0)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
         </div>
-      </section>
-
-      <section id="music" class="section">
-        <div class="section-head">
-          <h2>Featured releases</h2>
-          <p>Swap in your tracks, artwork, and streaming links.</p>
+        <div class="collage-item" onclick="openLightbox('tigers-eye',1)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
         </div>
-        <ul class="track-list">
-          <li class="track-card">
-            <div class="track-art" aria-hidden="true"></div>
-            <div class="track-meta">
-              <h3>Midnight Signal</h3>
-              <p>Single · 2026</p>
-            </div>
-            <button class="play-btn" type="button" aria-label="Play Midnight Signal">
-              ▶
-            </button>
-          </li>
-          <li class="track-card">
-            <div class="track-art track-art--alt" aria-hidden="true"></div>
-            <div class="track-meta">
-              <h3>Glass Garden</h3>
-              <p>EP · 2025</p>
-            </div>
-            <button class="play-btn" type="button" aria-label="Play Glass Garden">
-              ▶
-            </button>
-          </li>
-          <li class="track-card">
-            <div class="track-art track-art--alt2" aria-hidden="true"></div>
-            <div class="track-meta">
-              <h3>Live at The Hall</h3>
-              <p>Live session · 2025</p>
-            </div>
-            <button class="play-btn" type="button" aria-label="Play Live at The Hall">
-              ▶
-            </button>
-          </li>
-        </ul>
-      </section>
-
-      <section id="about" class="section about">
-        <div class="about-grid">
-          <h2>About</h2>
-          <div>
-            <p>
-              Write a short bio here — where you’re based, what you make, and
-              what you’re working on next. Keep it conversational; this page
-              should feel like you, not a résumé.
-            </p>
-            <ul class="tags">
-              <li>Electronic</li>
-              <li>Ambient</li>
-              <li>Film score</li>
-            </ul>
-          </div>
+        <div class="collage-item" onclick="openLightbox('tigers-eye',2)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
 
-      <section id="contact" class="section contact">
-        <h2>Contact</h2>
-        <p>Booking, press, and collabs — say hello.</p>
-        <a class="email-link" href="mailto:hello@example.com">hello@example.com</a>
-        <ul class="social-links">
-          <li><a href="#">Spotify</a></li>
-          <li><a href="#">SoundCloud</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">YouTube</a></li>
-        </ul>
-      </section>
-    </main>
+  <!-- WHISK -->
+  <div class="band-page" id="page-whisk">
+    <div class="band-page-header">
+      <button class="back-btn" onclick="hidePage()">← Back</button>
+      <h2 class="band-page-title">whisk</h2>
+    </div>
+    <div style="padding: 0.5rem 1.5rem 0;">
+      <textarea class="band-desc" rows="2" placeholder="Add a short description — genre, vibe, what you do with this band..."></textarea>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage">
+        <div class="collage-item" onclick="openLightbox('whisk',0)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('whisk',1)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('whisk',2)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> Your Name</p>
-    </footer>
+  <!-- CLOUD COMPANION -->
+  <div class="band-page" id="page-cloud-companion">
+    <div class="band-page-header">
+      <button class="back-btn" onclick="hidePage()">← Back</button>
+      <h2 class="band-page-title">Cloud Companion</h2>
+    </div>
+    <div style="padding: 0.5rem 1.5rem 0;">
+      <textarea class="band-desc" rows="2" placeholder="Add a short description — genre, vibe, what you do with this band..."></textarea>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage">
+        <div class="collage-item" onclick="openLightbox('cloud-companion',0)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('cloud-companion',1)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('cloud-companion',2)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="js/main.js"></script>
-  </body>
+  <!-- SOUL SIPPER -->
+  <div class="band-page" id="page-soul-sipper">
+    <div class="band-page-header">
+      <button class="back-btn" onclick="hidePage()">← Back</button>
+      <h2 class="band-page-title">Soul Sipper</h2>
+    </div>
+    <div style="padding: 0.5rem 1.5rem 0;">
+      <textarea class="band-desc" rows="2" placeholder="Add a short description — genre, vibe, what you do with this band..."></textarea>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage">
+        <div class="collage-item" onclick="openLightbox('soul-sipper',0)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('soul-sipper',1)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('soul-sipper',2)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAVOY BIG BAND -->
+  <div class="band-page" id="page-savoy-big-band">
+    <div class="band-page-header">
+      <button class="back-btn" onclick="hidePage()">← Back</button>
+      <h2 class="band-page-title">Savoy Big Band</h2>
+    </div>
+    <div style="padding: 0.5rem 1.5rem 0;">
+      <textarea class="band-desc" rows="2" placeholder="Add a short description — genre, vibe, what you do with this band..."></textarea>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage">
+        <div class="collage-item" onclick="openLightbox('savoy-big-band',0)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('savoy-big-band',1)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('savoy-big-band',2)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOUVENIIR -->
+  <div class="band-page" id="page-souveniir">
+    <div class="band-page-header">
+      <button class="back-btn" onclick="hidePage()">← Back</button>
+      <h2 class="band-page-title">Souveniir</h2>
+    </div>
+    <div style="padding: 0.5rem 1.5rem 0;">
+      <textarea class="band-desc" rows="2" placeholder="Add a short description — genre, vibe, what you do with this band..."></textarea>
+    </div>
+    <div class="collage-wrap">
+      <div class="collage">
+        <div class="collage-item" onclick="openLightbox('souveniir',0)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('souveniir',1)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+        <div class="collage-item" onclick="openLightbox('souveniir',2)">
+          <div class="collage-icon">▶</div>
+          <span class="collage-label">Video</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-content" id="lightbox-content">
+    <div class="lightbox-placeholder">
+      <div class="big-icon">◻</div>
+      <p>Add your media here</p>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE REEL -->
+<section class="reel-section" id="reel">
+  <div class="section-inner">
+    <div class="reel-embed fade-in">
+      <div class="reel-embed-bg"></div>
+      <div class="reel-embed-inner">
+        <div class="waveform">
+          <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+        <div class="play-btn" onclick="window.open('https://instagram.com','_blank')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--olive)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 3l14 9-14 9V3z"/>
+          </svg>
+        </div>
+        <p>Instagram · YouTube · Live Clips</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="fade-in">
+      <h2 class="section-title">Booking</h2>
+    </div>
+    <div class="contact-inner">
+      <div class="fade-in">
+        <p class="contact-note">For gigs, studio work, and touring —</p>
+        <a href="mailto:stevengarza737@gmail.com" class="contact-email">stevengarza737@gmail.com</a>
+        <div class="hero-buttons" style="margin-top:1rem">
+          <a href="mailto:stevengarza737@gmail.com" class="btn btn-primary">Send a Message</a>
+        </div>
+      </div>
+      <div class="social-links fade-in">
+        <a href="https://www.instagram.com/st3vengarza?igsh=ZDltZG8zbTgwZWk=" target="_blank" class="social-link">
+          <span class="social-link-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </span>
+          Instagram
+        </a>
+        <a href="https://youtube.com/@stevengarza7335?si=lHFhBxf3miKs8s5c" target="_blank" class="social-link">
+          <span class="social-link-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 001.94-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </span>
+          YouTube
+        </a>
+        <a href="https://www.facebook.com/share/1FgKEURa55/?mibextid=wwXIfr" target="_blank" class="social-link">
+          <span class="social-link-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--olive)" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </span>
+          Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-sig">
+  Steven Garza &ensp;·&ensp; Austin, Texas &ensp;·&ensp; stevengarza.live
+</footer>
+
+<script src="js/main.js"></script>
+</body>
 </html>
