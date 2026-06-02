@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="logo" href="#">Your Name</a>
+      <nav aria-label="Primary">
+        <a href="#music">Music</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <p class="eyebrow">Composer · Producer · Performer</p>
+        <h1>Stories told through <em>sound</em></h1>
+        <p class="lead">
+          A home for original work, live recordings, and collaborations. Replace
+          this copy with your own voice.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#music">Listen now</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </section>
+
+      <section id="music" class="section">
+        <div class="section-head">
+          <h2>Featured releases</h2>
+          <p>Swap in your tracks, artwork, and streaming links.</p>
+        </div>
+        <ul class="track-list">
+          <li class="track-card">
+            <div class="track-art" aria-hidden="true"></div>
+            <div class="track-meta">
+              <h3>Midnight Signal</h3>
+              <p>Single · 2026</p>
+            </div>
+            <button class="play-btn" type="button" aria-label="Play Midnight Signal">
+              ▶
+            </button>
+          </li>
+          <li class="track-card">
+            <div class="track-art track-art--alt" aria-hidden="true"></div>
+            <div class="track-meta">
+              <h3>Glass Garden</h3>
+              <p>EP · 2025</p>
+            </div>
+            <button class="play-btn" type="button" aria-label="Play Glass Garden">
+              ▶
+            </button>
+          </li>
+          <li class="track-card">
+            <div class="track-art track-art--alt2" aria-hidden="true"></div>
+            <div class="track-meta">
+              <h3>Live at The Hall</h3>
+              <p>Live session · 2025</p>
+            </div>
+            <button class="play-btn" type="button" aria-label="Play Live at The Hall">
+              ▶
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="about-grid">
+          <h2>About</h2>
+          <div>
+            <p>
+              Write a short bio here — where you’re based, what you make, and
+              what you’re working on next. Keep it conversational; this page
+              should feel like you, not a résumé.
+            </p>
+            <ul class="tags">
+              <li>Electronic</li>
+              <li>Ambient</li>
+              <li>Film score</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <h2>Contact</h2>
+        <p>Booking, press, and collabs — say hello.</p>
+        <a class="email-link" href="mailto:hello@example.com">hello@example.com</a>
+        <ul class="social-links">
+          <li><a href="#">Spotify</a></li>
+          <li><a href="#">SoundCloud</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Your Name</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
