@@ -37,6 +37,11 @@ export const project = defineType({
       rows: 3,
     }),
     defineField({
+      name: "instagramUrl",
+      title: "Instagram URL",
+      type: "url",
+    }),
+    defineField({
       name: "video1",
       title: "Video 1",
       type: "file",

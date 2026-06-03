@@ -32,7 +32,8 @@
       "thumbUrl": thumbnail.asset->url,
       "video1": video1.asset->url,
       "video2": video2.asset->url,
-      "video3": video3.asset->url
+      "video3": video3.asset->url,
+      instagramUrl
     }
   }`;
 
@@ -193,6 +194,7 @@
           </div>
           <div style="padding: 0.5rem 1.5rem 0;">
             <p class="band-desc band-desc--static">${desc}</p>
+            ${p.instagramUrl ? `<a href="${escapeHtml(p.instagramUrl)}" target="_blank" rel="noopener" class="social-link" style="margin-top:0.5rem;display:inline-block;">Instagram →</a>` : ''}
           </div>
           <div class="collage-wrap">
             <div class="collage">
